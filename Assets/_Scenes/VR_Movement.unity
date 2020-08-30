@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18031204, g: 0.22574848, b: 0.30693913, a: 1}
+  m_IndirectSpecularColor: {r: 0.44661474, g: 0.49645692, b: 0.57483935, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -69154,7 +69154,7 @@ GameObject:
   - component: {fileID: 1829429605}
   - component: {fileID: 1829429606}
   - component: {fileID: 1829429607}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: VR_Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
