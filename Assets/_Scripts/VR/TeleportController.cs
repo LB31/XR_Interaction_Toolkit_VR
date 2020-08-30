@@ -8,6 +8,8 @@ public class TeleportController : MonoBehaviour
     public XRController RightTeleportRay;
     public InputHelpers.Button TeleportActivationButton;
     public float ActivationThreshold = 0.1f;
+    public bool EnableTeleport { get; set; } = true;
+
     private XRRayInteractor rightRayInteractor;
 
     void Start()
@@ -28,6 +30,6 @@ public class TeleportController : MonoBehaviour
     private bool CheckIfActivated(XRController controller)
     {
         InputHelpers.IsPressed(controller.inputDevice, TeleportActivationButton, out bool isActivated, ActivationThreshold);
-        return isActivated;
+        return isActivated && EnableTeleport;
     }
 }
