@@ -9,21 +9,29 @@ public class TeleportController : MonoBehaviour
     public InputHelpers.Button TeleportActivationButton;
     public float ActivationThreshold = 0.1f;
     public bool EnableTeleport { get; set; } = true;
+    public XRRayInteractor rightRayInteractorInteract;
 
-    private XRRayInteractor rightRayInteractor;
+    private XRRayInteractor rightRayInteractorTeleport;
 
     void Start()
     {
         if (RightTeleportRay)
-            rightRayInteractor = RightTeleportRay.gameObject.GetComponent<XRRayInteractor>();
+            rightRayInteractorTeleport = RightTeleportRay.gameObject.GetComponent<XRRayInteractor>();
     }
 
     void Update()
     {
+        Vector3 pos = new Vector3();
+        Vector3 norm = new Vector3();
+        int index = 0;
+        bool validTarget = false;
+
         if (RightTeleportRay)
         {
-            rightRayInteractor.allowSelect = CheckIfActivated(RightTeleportRay);
-            RightTeleportRay.gameObject.SetActive(CheckIfActivated(RightTeleportRay));
+            bool isRightInteractorRayHovering = rightRayInteractorInteract.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
+            // To trigger / unselect the teleportation area before the ray gets deactivated. For better teleporting
+            rightRayInteractorTeleport.allowSelect = CheckIfActivated(RightTeleportRay);
+            RightTeleportRay.gameObject.SetActive(CheckIfActivated(RightTeleportRay) && !isRightInteractorRayHovering);
         }
     }
 
